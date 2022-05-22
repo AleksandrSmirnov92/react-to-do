@@ -7,7 +7,7 @@ import Main from './components/Main/Main';
 function App() {
 
   return (
-    <div className={appCSS._container}>
+    <div className={`${appCSS.wrapper} + ${appCSS._container}`}>
      <Header/>
      <Main/>
       <footer></footer>
