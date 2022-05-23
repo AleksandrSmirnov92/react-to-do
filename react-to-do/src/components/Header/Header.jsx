@@ -1,13 +1,13 @@
 import React from "react"
 import HeaderCSS from "../Header/header.module.css"
-const Header = () => {
+const Header = (props) => {
 
    return(
       <header class={HeaderCSS.header}>
         
       <div className={HeaderCSS.header_wrapper}>
-         <span class={HeaderCSS.header_span}>Осталось выполнить</span>
-         <span class={HeaderCSS.header_span2}></span>
+         <span className={HeaderCSS.header_span}>Осталось выполнить</span>
+         <span className={HeaderCSS.header_span2}>{props.counter.count}</span>
       </div>
    </header>
 

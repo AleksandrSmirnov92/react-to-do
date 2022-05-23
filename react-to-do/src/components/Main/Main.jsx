@@ -1,15 +1,15 @@
 import React from "react";
 import AddTask from "./Add-Task/AddTask";
 import Filter from "./Filter/Filter";
-import appCSS from "../../app.module.css"
-const Main = () => {
+// import appCSS from "../../app.module.css"
+
+const Main = (props) => {
+   
+   
    return (
       <main>
-         <AddTask/>
+         <AddTask newMessage = {props.props.props.state.Message.newMessage} addTask = {props.addTask} apdateNewTaskChange ={props.apdateNewTaskChange}/>
          <Filter/>
-         <div className={appCSS.wrapper_task}>
-            
-         </div>
       </main>
    )
 }
