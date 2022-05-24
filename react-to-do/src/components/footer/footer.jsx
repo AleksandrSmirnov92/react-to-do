@@ -12,12 +12,12 @@ const Footer = (props) => {
    return(
        props.addMessage.map((p, index)=>{
            return (
-            <div className={`${FooterCSS.add_task_result} ${p.checked ? FooterCSS.add_task_chacked_color : ""}`}>
-                <span className={`${FooterCSS.add_task_result_text} ${p.checked ? FooterCSS.add_task_result_text_t : ""}`} id={p.id=index}>{p.massage}{index}</span>
+            <div key={index} className={`${FooterCSS.add_task_result} ${p.checked ? FooterCSS.add_task_chacked_color : ""}`}>
+                <span className={`${FooterCSS.add_task_result_text} ${p.checked ? FooterCSS.add_task_result_text_t : ""}`} id={index}>{p.massage}{index}</span>
                 <div>
-                <input type ="checkbox"  id={index} onClick={() => {checked(index)}}/>
+                <input type ="checkbox"  id={p.id} onClick={() => {checked(index)}}/>
                 {index}
-                <button onClick={() => {remove(index)}} className={FooterCSS.add_task_result_text_remove} id={index}>удалить {index}</button>
+                <button onClick={() => {remove(index)}} className={FooterCSS.add_task_result_text_remove} id={p.id}>удалить {index}</button>
                 </div>
             </div>
             

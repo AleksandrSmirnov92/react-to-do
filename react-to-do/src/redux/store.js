@@ -20,11 +20,13 @@ let store = {
       } 
     },
   }
+  
   export let AddTask = () => { 
     if (store.state.Message.newMessage.trim() !==""){
-    let newTask = {id:6, massage:store.state.Message.newMessage,checked: false}
+    let newTask = {id:"", massage:store.state.Message.newMessage,checked: false}
     store.state.Message.addMessage.push(newTask)
     store.state.counter.count++
+    console.log(store.state.Message.addMessage)
     renderEntireTree()
     }
     else {
@@ -43,27 +45,22 @@ export let removeAddTask = (index) => {
     
       }
       store.state.Message.addMessage.splice(index,1)
-      
-      renderEntireTree()
+     break
     }
   }
   
   
   renderEntireTree()
 }
-export let changeChecked = (index) => {
-  for (let item of store.state.Message.addMessage) {
-    if (item.id === index) {
-      item.checked = !item.checked
-      if(store.state.counter.count > 0 && !item.checked) {
-        store.state.counter.count++
-      }
-      else {
-        store.state.counter.count--
-        }
-      break
-    }
-  }
+export function changeChecked (index) {
+ for (let item of store.state.Message.addMessage) {
+   
+     item.checked = !item.checked
+     console.log(item.checked + "меняет checkbox")
+   
+ }
+  
+  
   renderEntireTree()
   
 }
