@@ -11,7 +11,7 @@ function App(props) {
     <div className={`${appCSS.wrapper} + ${appCSS._container}`}>
      <Header counter={props.props.state.counter}/>
      <Main props={props} addTask={props.addTask} apdateNewTaskChange = {props.apdateNewTaskChange}/>
-     <Footer addMessage={props.props.state.Message.addMessage}/>
+     <Footer addMessage={props.props.state.Message.addMessage} removeAddTask= {props.removeAddTask}/>
     </div>
     
   );

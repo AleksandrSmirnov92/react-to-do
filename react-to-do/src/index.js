@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/store.js"
-import { AddTask,subscribe,apdateNewTaskChange } from './redux/store.js';
+import { AddTask,subscribe,apdateNewTaskChange,removeAddTask } from './redux/store.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let renderEntireTree = () => {
 root.render(
   <React.StrictMode>
-    <App props={store} addTask = {AddTask} apdateNewTaskChange = {apdateNewTaskChange}/>
+    <App props={store} addTask = {AddTask} apdateNewTaskChange = {apdateNewTaskChange} removeAddTask ={removeAddTask}/>
   </React.StrictMode>
 );
 }

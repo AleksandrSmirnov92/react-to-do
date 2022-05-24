@@ -3,7 +3,7 @@ import FooterCSS from "./footer.module.css"
 const Footer = (props) => {
    
     let remove = (index) => {
-        alert(`я тебя удалю ${index}`)
+        props.removeAddTask(index)
     }
    return(
        props.addMessage.map((p, index)=>{
