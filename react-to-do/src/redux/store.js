@@ -4,11 +4,11 @@ let store = {
     state: {
       Message:{
         addMessage:[
-          { id: 1, massage: "hi" ,checked: false},
-          { id: 2, massage: "How are you" ,checked: false},
-          { id: 3, massage: "you" , checked: false},
-          { id: 4, massage: "yo" ,checked: false},
-          { id: 5, massage: "yo",checked: false },
+          // { id: 1, massage: "hi" ,checked: false},
+          // { id: 2, massage: "How are you" ,checked: false},
+          // { id: 3, massage: "you" , checked: false},
+          // { id: 4, massage: "yo" ,checked: false},
+          // { id: 5, massage: "yo",checked: false },
         ],
         newMessage:""
       },
@@ -38,15 +38,34 @@ let store = {
 export let removeAddTask = (index) => {
   for (let item of store.state.Message.addMessage) {
     if (item.id === index) {
-      store.state.Message.addMessage.splice(index,1)
-      if (store.state.counter.count > 0) {
+      if (store.state.counter.count > 0 && !item.checked) {
       store.state.counter.count--
+    
       }
+      store.state.Message.addMessage.splice(index,1)
+      
+      renderEntireTree()
+    }
+  }
+  
+  
+  renderEntireTree()
+}
+export let changeChecked = (index) => {
+  for (let item of store.state.Message.addMessage) {
+    if (item.id === index) {
+      item.checked = !item.checked
+      if(store.state.counter.count > 0 && !item.checked) {
+        store.state.counter.count++
+      }
+      else {
+        store.state.counter.count--
+        }
       break
     }
   }
   renderEntireTree()
-  console.log()
+  
 }
   export const subscribe = (observe) => {
       renderEntireTree = observe
