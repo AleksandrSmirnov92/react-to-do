@@ -7,7 +7,7 @@ const Header = (props) => {
         
       <div className={HeaderCSS.header_wrapper}>
          <span className={HeaderCSS.header_span}>Осталось выполнить</span>
-         <span className={HeaderCSS.header_span2}>{props.counter.count}</span>
+         <span className={HeaderCSS.header_span2}>{props.counter}</span>
       </div>
    </header>
 

@@ -4,11 +4,11 @@ import Filter from "./Filter/Filter";
 // import appCSS from "../../app.module.css"
 
 const Main = (props) => {
-   
+ 
    
    return (
       <main>
-         <AddTask newMessage = {props.props.props.state.Message.newMessage} addTask = {props.addTask} apdateNewTaskChange ={props.apdateNewTaskChange}/>
+         <AddTask newMassage = {props.newMassage} addTask = {props.addTask} apdateNewTaskChange ={props.apdateNewTaskChange}/>
          <Filter/>
       </main>
    )
