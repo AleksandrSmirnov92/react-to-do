@@ -1,4 +1,8 @@
 import React from "react";
+let ADD_TASK = "ADD_POST"
+let APDATE_NEW_TASK_CHANGE = "APDATE_NEW_TASK_CHANGE"
+let REMOVE_ADD_TASK = "REMOVE_ADD_TASK"
+let CHANGE_CHECKED = "CHANGE_CHECKED"
 let b = 0;
 let store = {
   _state: {
@@ -20,6 +24,48 @@ let store = {
   getState () {
     return this._state
   },
+  subscribe(observe) {
+    this.renderEntireTree = observe;
+  },
+ dispatch (action) {
+   if (action === ADD_TASK) {
+    if (this._state.Message.newMessage.trim() !== "") {
+      let newTask = {
+        id: b,
+        massage: this._state.Message.newMessage,
+        checked: false,
+      };
+      b++;
+      this._state.Message.addMessage.push(newTask);
+      this._state.Message.newMessage= ""
+      this._state.counter.count++;
+      this.renderEntireTree();
+    } else {
+      alert("Вы ничего не ввели");
+    }
+   }
+   else if (action === APDATE_NEW_TASK_CHANGE) {
+    this._state.Message.newMessage = action.newText;
+    this.renderEntireTree();
+   }
+   else if (action === REMOVE_ADD_TASK) {
+    let result = this._state.Message.addMessage.filter((item) => item.id != action.id);
+    this._state.Message.addMessage = result;
+    this.renderEntireTree();
+   }
+   else if (action === CHANGE_CHECKED) {
+    for (let item of this._state.Message.addMessage) {
+      if (item.id === action.index) {
+        item.checked = !item.checked;
+        break;
+      }
+    }
+    this.renderEntireTree();
+   }
+ },
+
+
+
   AddTask() {
     if (this._state.Message.newMessage.trim() !== "") {
       let newTask = {
@@ -56,9 +102,7 @@ let store = {
     this.renderEntireTree();
   },
 
-  subscribe(observe) {
-    this.renderEntireTree = observe;
-  },
+  
 };
 
 export default store;
