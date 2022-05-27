@@ -8,7 +8,7 @@ const Main = (props) => {
    
    return (
       <main>
-         <AddTask newMassage = {props.newMassage} addTask = {props.addTask} apdateNewTaskChange ={props.apdateNewTaskChange}/>
+         <AddTask newMassage = {props.newMassage} dispatch = {props.dispatch} addTask = {props.addTask} apdateNewTaskChange ={props.apdateNewTaskChange}/>
          <Filter/>
       </main>
    )

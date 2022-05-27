@@ -1,13 +1,14 @@
 import React from "react";
 import FooterCSS from "./footer.module.css"
 const Footer = (props) => {
-debugger
+
     let remove = (id) => {
-        props.removeAddTask(id)
-        
+        // props.removeAddTask(id)
+        props.dispatch({type:"REMOVE_ADD_TASK",id:id})
     }
     let checked = (index) => {
-        props.changeChecked(index)
+        // props.changeChecked(index)
+        props.dispatch({type:"CHANGE_CHECKED",index:index})
     }
    return(
        props.addMessage.map((p, index)=>{

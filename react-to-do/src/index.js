@@ -18,11 +18,15 @@ let renderEntireTree = (state) => {
     <App 
     counter={state.counter} 
     addMessage={state.Message.addMessage} 
+
     newMassage={state.Message.newMassage} 
-    addTask = {store.AddTask.bind(store)} 
-    apdateNewTaskChange = {store.apdateNewTaskChange.bind(store)} 
-    removeAddTask ={store.removeAddTask.bind(store)} 
-    changeChecked={store.changeChecked.bind(store)}
+
+    // addTask = {store.AddTask.bind(store)} 
+    dispatch = {store.dispatch.bind(store)}
+
+    // apdateNewTaskChange = {store.apdateNewTaskChange.bind(store)} 
+    // removeAddTask ={store.removeAddTask.bind(store)} 
+    // changeChecked={store.changeChecked.bind(store)}
     />
   </React.StrictMode>
   </BrowserRouter>,
