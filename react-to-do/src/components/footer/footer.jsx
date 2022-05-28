@@ -1,6 +1,6 @@
 import React from "react";
 import FooterCSS from "./footer.module.css"
-import {removeAddTaskActionCreator,changeCheckedActionCreator} from "../../redux/store"
+import {removeAddTaskActionCreator,changeCheckedActionCreator} from "../../redux/addMessageReducer"
 const Footer = (props) => {
 
     let remove = (id) => {

@@ -1,9 +1,7 @@
 import React from "react";
-let ADD_POST = "ADD_POST"
-let APDATE_NEW_TASK_CHANGE = "APDATE_NEW_TASK_CHANGE"
-let REMOVE_ADD_TASK = "REMOVE_ADD_TASK"
-let CHANGE_CHECKED = "CHANGE_CHECKED"
-let b = 0;
+import addMessageReducer from "../redux/addMessageReducer"
+
+// let b = 0;
 let store = {
   _state: {
     Message: {
@@ -28,73 +26,16 @@ let store = {
     this.renderEntireTree = observe;
   },
  dispatch (action) {
-  
-   if (action.type === ADD_POST) {
-    if (this._state.Message.newMessage.trim() !== "") {
-      let newTask = {
-        id: b,
-        massage: this._state.Message.newMessage,
-        checked: false,
-      };
-      b++;
-      this._state.Message.addMessage.push(newTask);
-      this._state.Message.newMessage= ""
-      this._state.counter.count++;
-      console.log("все работает")
-      this.renderEntireTree();
-     
-    } else {
-      alert("Вы ничего не ввели");
-    }
-   }
-   else if (action.type === APDATE_NEW_TASK_CHANGE) {
-    
-    this._state.Message.newMessage = action.newText;
-    this.renderEntireTree();
-   }
-   else if (action.type === REMOVE_ADD_TASK) {
-    let result = this._state.Message.addMessage.filter((item) => item.id !== action.id);
-    this._state.Message.addMessage = result;
-    this.renderEntireTree();
-   }
-   else if (action.type === CHANGE_CHECKED) {
-    for (let item of this._state.Message.addMessage) {
-      if (item.id === action.index) {
-        item.checked = !item.checked;
-        break;
-      }
-    }
-    this.renderEntireTree();
-   }
- },
+ 
+  this._state = addMessageReducer(this._state,action)
+  this.renderEntireTree();
+
 
 
   
-};
+}
+}
 
-export const addPostActionCreator = () => {
-return{
-  type:ADD_POST
-}
-}
-export const apdateNewTaskChangeActionCreator = (newText) => {
-return{
-  type:APDATE_NEW_TASK_CHANGE,
-  newText:newText
-}
-}
-export const removeAddTaskActionCreator = (id) => {
-return{
-  type:REMOVE_ADD_TASK,
-  id:id
-}
-}
-export const changeCheckedActionCreator = (index) => {
-return{
-  type:CHANGE_CHECKED,
-  index:index
-}
-} 
 
 
 

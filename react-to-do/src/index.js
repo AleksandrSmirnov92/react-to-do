@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from "./redux/store.js"
+import store from "./redux/redux-store"
 import {BrowserRouter} from "react-router-dom"
 // import { AddTask,subscribe,apdateNewTaskChange,removeAddTask,changeChecked} from './redux/store.js';
 
@@ -11,15 +11,15 @@ import {BrowserRouter} from "react-router-dom"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let renderEntireTree = (state) => {
-  
+  debugger
   root.render(
     <BrowserRouter>
   <React.StrictMode>
     <App 
-    counter={state.counter} 
-    addMessage={state.Message.addMessage} 
+    counter={state.addMessageReducer.counter} 
+    addMessage={state.addMessageReducer.Message.addMessage} 
 
-    newMassage={state.Message.newMassage} 
+    newMassage={state.addMessageReducer.Message.newMassage} 
 
    
     dispatch = {store.dispatch.bind(store)}

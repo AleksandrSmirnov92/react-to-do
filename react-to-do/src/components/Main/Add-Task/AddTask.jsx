@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AddTaskCSS from "../Add-Task/AddTask.module.css"
-import {addPostActionCreator,apdateNewTaskChangeActionCreator} from "../../../redux/store"
+import {addPostActionCreator,apdateNewTaskChangeActionCreator} from "../../../redux/addMessageReducer"
 
 const AddTask = (props) => {
    let myref = React.createRef()
