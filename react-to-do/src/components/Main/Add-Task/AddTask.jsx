@@ -5,15 +5,13 @@ import {addPostActionCreator,apdateNewTaskChangeActionCreator} from "../../../re
 const AddTask = (props) => {
    let myref = React.createRef()
    let addTask = () => {
-      props.dispatch(addPostActionCreator())
-   
+      props.addPost()
      myref.current.value = ""
      
    }
    let OnTaskChange = () => {
       let textInput = myref.current.value
-      
-      props.dispatch(apdateNewTaskChangeActionCreator(textInput))
+      props.apdateNewTask(textInput)
    }
    return(
          <div className={AddTaskCSS.add_task}>

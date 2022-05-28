@@ -4,10 +4,10 @@ import {removeAddTaskActionCreator,changeCheckedActionCreator} from "../../redux
 const Footer = (props) => {
 
     let remove = (id) => {
-        props.dispatch(removeAddTaskActionCreator(id))
+        props.removeAddTask(id)
     }
     let checked = (index) => {
-        props.dispatch(changeCheckedActionCreator(index))
+        props.changeChecked(index)
     }
    return(
        props.addMessage.map((p, index)=>{

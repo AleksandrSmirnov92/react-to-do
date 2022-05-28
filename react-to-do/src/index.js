@@ -11,16 +11,15 @@ import {BrowserRouter} from "react-router-dom"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let renderEntireTree = (state) => {
-  debugger
+  
   root.render(
     <BrowserRouter>
   <React.StrictMode>
     <App 
-    counter={state.addMessageReducer.counter} 
     addMessage={state.addMessageReducer.Message.addMessage} 
 
     newMassage={state.addMessageReducer.Message.newMassage} 
-
+    store = {store}
    
     dispatch = {store.dispatch.bind(store)}
 
