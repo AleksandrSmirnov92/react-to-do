@@ -1,14 +1,13 @@
 import React from "react";
 import FooterCSS from "./footer.module.css"
+import {removeAddTaskActionCreator,changeCheckedActionCreator} from "../../redux/store"
 const Footer = (props) => {
 
     let remove = (id) => {
-        // props.removeAddTask(id)
-        props.dispatch({type:"REMOVE_ADD_TASK",id:id})
+        props.dispatch(removeAddTaskActionCreator(id))
     }
     let checked = (index) => {
-        // props.changeChecked(index)
-        props.dispatch({type:"CHANGE_CHECKED",index:index})
+        props.dispatch(changeCheckedActionCreator(index))
     }
    return(
        props.addMessage.map((p, index)=>{

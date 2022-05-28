@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import AddTaskCSS from "../Add-Task/AddTask.module.css"
-
-let ADD_POST = "ADD_POST"
+import {addPostActionCreator,apdateNewTaskChangeActionCreator} from "../../../redux/store"
 
 const AddTask = (props) => {
-  debugger
-   // let [state,setState] = useState(props.props.props.props.state.Message.newMessage)
    let myref = React.createRef()
    let addTask = () => {
-      props.dispatch({type:"ADD_POST"})
-   //   props.addTask()
+      props.dispatch(addPostActionCreator())
+   
      myref.current.value = ""
      
    }
    let OnTaskChange = () => {
       let textInput = myref.current.value
-      // props.apdateNewTaskChange(textInput)
-      props.dispatch({type:"APDATE_NEW_TASK_CHANGE",newText:textInput})
+      
+      props.dispatch(apdateNewTaskChangeActionCreator(textInput))
    }
    return(
          <div className={AddTaskCSS.add_task}>

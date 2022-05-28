@@ -21,12 +21,9 @@ let renderEntireTree = (state) => {
 
     newMassage={state.Message.newMassage} 
 
-    // addTask = {store.AddTask.bind(store)} 
+   
     dispatch = {store.dispatch.bind(store)}
 
-    // apdateNewTaskChange = {store.apdateNewTaskChange.bind(store)} 
-    // removeAddTask ={store.removeAddTask.bind(store)} 
-    // changeChecked={store.changeChecked.bind(store)}
     />
   </React.StrictMode>
   </BrowserRouter>,
