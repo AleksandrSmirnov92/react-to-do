@@ -23,43 +23,45 @@ let initialState = {
 };
 
 const addMessageReducer = (state = initialState, action) => {
+  let stateCopy = {...state}
   switch (action.type) {
     case ADD_POST:
-      if (state.Message.newMessage.trim() !== "") {
+      if (stateCopy.Message.newMessage.trim() !== "") {
         let newTask = {
           id: b,
-          massage: state.Message.newMessage,
+          massage: stateCopy.Message.newMessage,
           checked: false,
         };
         b++;
-        state.Message.addMessage.push(newTask);
-        state.Message.newMessage = "";
-        state.counter.count++;
+        stateCopy.Message.addMessage.push(newTask);
+        stateCopy.Message.newMessage = "";
+        stateCopy.counter.count++;
         console.log("все работает");
-        return state;
+        return stateCopy;
       } else {
         alert("Вы ничего не ввели");
+        return stateCopy
       }
     case APDATE_NEW_TASK_CHANGE:
-      state.Message.newMessage = action.newText;
-      return state;
+      stateCopy.Message.newMessage = action.newText;
+      return stateCopy;
 
     case REMOVE_ADD_TASK:
-      let result = state.Message.addMessage.filter(
+      let result = stateCopy.Message.addMessage.filter(
         (item) => item.id !== action.id
       );
-      state.Message.addMessage = result;
-      return state;
+      stateCopy.Message.addMessage = result;
+      return stateCopy;
     case CHANGE_CHECKED:
-      for (let item of state.Message.addMessage) {
+      for (let item of stateCopy.Message.addMessage) {
         if (item.id === action.index) {
           item.checked = !item.checked;
           break;
         }
       }
-      return state;
+      return stateCopy;
     default:
-      return state;
+      return stateCopy;
   }
 };
 export const addPostActionCreator = () => {

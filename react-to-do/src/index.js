@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store"
 import {BrowserRouter} from "react-router-dom"
+import { Provider } from 'react-redux';
 // import { AddTask,subscribe,apdateNewTaskChange,removeAddTask,changeChecked} from './redux/store.js';
 
 
@@ -14,17 +15,16 @@ let renderEntireTree = (state) => {
   
   root.render(
     <BrowserRouter>
+    
   <React.StrictMode>
+  <Provider store = {store}>
     <App 
-    addMessage={state.addMessageReducer.Message.addMessage} 
-
-    newMassage={state.addMessageReducer.Message.newMassage} 
-    store = {store}
-   
-    dispatch = {store.dispatch.bind(store)}
-
+    // store = {store}
+    // dispatch = {store.dispatch.bind(store)}
     />
+    </Provider>
   </React.StrictMode>
+  
   </BrowserRouter>,
 );
 }
