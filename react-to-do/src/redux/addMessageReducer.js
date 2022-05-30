@@ -61,7 +61,7 @@ const addMessageReducer = (state = initialState, action) => {
       }
       return stateCopy;
     default:
-      return stateCopy;
+      return state;
   }
 };
 export const addPostActionCreator = () => {

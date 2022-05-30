@@ -6,9 +6,7 @@ let mapStateToProps = (state) => {
      counter: state
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return{}
-}
+
 
 const HeaderContainer = connect (mapStateToProps,null) (Header)
 export default HeaderContainer
