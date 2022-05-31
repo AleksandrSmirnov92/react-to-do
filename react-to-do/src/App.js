@@ -5,7 +5,7 @@ import appCSS from "./app.module.css"
 import AllTaskContainer from './components/All_TASK/All_Task_Container';
 import HeaderContainer from './components/Header/Header_container';
 import Main from './components/Main/Main';
-import AllActive from './components/All_Active/All_Active';
+import AllActiveContainer from './components/All_Active/All_Active_container';
 import AllINActive from './components/All_inActive/All_inActive';
 import Filtercontainer from './components/Main/Filter/Filter_container';
 function App(props) {
@@ -18,7 +18,7 @@ function App(props) {
      <Filtercontainer/>
      <Routes>
        <Route path='/ALL' element= {<AllTaskContainer/>}/>
-       <Route path="/ALLACTIVE" element={<AllActive/>}/>
+       <Route path="/ALLACTIVE" element={<AllActiveContainer/>}/>
        <Route path="ALLINACTIVE" element={<AllINActive/>}/>
      </Routes>
     </div>
