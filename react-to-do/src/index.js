@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store"
-import {BrowserRouter} from "react-router-dom"
+// import {BrowserRouter} from "react-router-dom"
 import { Provider } from 'react-redux';
 // import { AddTask,subscribe,apdateNewTaskChange,removeAddTask,changeChecked} from './redux/store.js';
 
@@ -14,18 +14,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 let renderEntireTree = (state) => {
   
   root.render(
-    <BrowserRouter>
+   
     
   <React.StrictMode>
   <Provider store = {store}>
-    <App 
-    // store = {store}
-    // dispatch = {store.dispatch.bind(store)}
-    />
+    <App />
     </Provider>
   </React.StrictMode>
   
-  </BrowserRouter>,
+  
 );
 }
 store.subscribe(() => {

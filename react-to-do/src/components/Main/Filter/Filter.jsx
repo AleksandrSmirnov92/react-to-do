@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink,Link,useNavigate} from 'react-router-dom';
 import FilterCSS from "../Filter/Filter.module.css"
-const Filter = () => {
+const Filter = (props) => {
+   let navigate = useNavigate()
+   let [value,setValue] = useState()
+   let text = React.createRef()
+   let Nav = () => {
+      
+      setValue(text.current.value)
+      navigate(text.current.value)
+     
+      props.active(text.current.value,navigate)
+   }
+
    return (
       <div className={FilterCSS.filter_block}>
-            <select className={FilterCSS.filter}>
-               <option class="t" value="all" selected>Выбрать все </option>
-               <option class="t" value="all-active">Выбрать активные</option>
-               <option class="t" value="all-inactive">Выбрать законченные</option>
+            <select ref={text} value={value} className={FilterCSS.filter} onChange={Nav}>
+               <option class={"/ALL"} value="all" selected>Выбрать все </option>
+               <option  value={"/ALLACTIVE"} > Выбрать активные </option>
+               <option  value={"/ALLINACTIVE"} >Выбрать законченные</option>
             </select>
+            
          </div>
    )
 }

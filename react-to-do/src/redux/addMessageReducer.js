@@ -3,7 +3,8 @@ let ADD_POST = "ADD_POST";
 let APDATE_NEW_TASK_CHANGE = "APDATE_NEW_TASK_CHANGE";
 let REMOVE_ADD_TASK = "REMOVE_ADD_TASK";
 let CHANGE_CHECKED = "CHANGE_CHECKED";
-let b = 0;
+let ACTIVE = "ACTIVE"
+let id = 0;
 let initialState = {
   
     Message: {
@@ -28,11 +29,11 @@ const addMessageReducer = (state = initialState, action) => {
     case ADD_POST:
       if (stateCopy.Message.newMessage.trim() !== "") {
         let newTask = {
-          id: b,
+          id: id,
           massage: stateCopy.Message.newMessage,
           checked: false,
         };
-        b++;
+        id++;
         stateCopy.Message.addMessage.push(newTask);
         stateCopy.Message.newMessage = "";
         stateCopy.counter.count++;
@@ -50,16 +51,37 @@ const addMessageReducer = (state = initialState, action) => {
       let result = stateCopy.Message.addMessage.filter(
         (item) => item.id !== action.id
       );
+      for (let item of stateCopy.Message.addMessage) {
+      if (item.checked === false && item.id === action.id) {
+      stateCopy.counter.count--;
+      break
+      }
+    }
       stateCopy.Message.addMessage = result;
       return stateCopy;
     case CHANGE_CHECKED:
       for (let item of stateCopy.Message.addMessage) {
         if (item.id === action.index) {
           item.checked = !item.checked;
+          if (item.checked) {
+            stateCopy.counter.count--;
+          }
+          else {
+            stateCopy.counter.count++;
+          }
           break;
         }
       }
       return stateCopy;
+      case ACTIVE: 
+      if (action.active === "/ALLACTIVE") {
+        action.navigate("/ALLACTIVE")
+        console.log("all")
+      }
+      else if (action.active === "/ALLINACTIVE") {
+        action.navigate("/ALLINACTIVE")
+        console.log("not all")
+      }
     default:
       return state;
   }
@@ -87,5 +109,11 @@ export const changeCheckedActionCreator = (index) => {
     index: index,
   };
 };
-
+export const activeActionCreator = (active,navigate) => {
+  return {
+    type:ACTIVE,
+    active:active,
+    navigate:navigate
+  };
+};
 export default addMessageReducer;

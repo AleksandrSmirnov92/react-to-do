@@ -1,20 +1,29 @@
 import React from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import './App.css';
 import appCSS from "./app.module.css"
-import FooterContainer from './components/footer/footer_container';
-// import Header from "./components/Header/Header"
+import AllTaskContainer from './components/All_TASK/All_Task_Container';
 import HeaderContainer from './components/Header/Header_container';
 import Main from './components/Main/Main';
-
+import AllActive from './components/All_Active/All_Active';
+import AllINActive from './components/All_inActive/All_inActive';
+import Filtercontainer from './components/Main/Filter/Filter_container';
 function App(props) {
  
   return (
+    <BrowserRouter>
     <div className={`${appCSS.wrapper} + ${appCSS._container}`}>
      <HeaderContainer/>
      <Main />
-     <FooterContainer />
+     <Filtercontainer/>
+     <Routes>
+       <Route path='/ALL' element= {<AllTaskContainer/>}/>
+       <Route path="/ALLACTIVE" element={<AllActive/>}/>
+       <Route path="ALLINACTIVE" element={<AllINActive/>}/>
+     </Routes>
     </div>
-    
+
+    </BrowserRouter>
   );
 }
 

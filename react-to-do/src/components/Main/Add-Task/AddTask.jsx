@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AddTaskCSS from "../Add-Task/AddTask.module.css"
 
 const AddTask = (props) => {
-   debugger
    let state = props.newMassage.addMessageReducer.Message
    let myref = React.createRef()
    let addTask = () => {
