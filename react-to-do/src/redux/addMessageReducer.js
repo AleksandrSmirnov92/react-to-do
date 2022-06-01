@@ -4,6 +4,7 @@ let APDATE_NEW_TASK_CHANGE = "APDATE_NEW_TASK_CHANGE";
 let REMOVE_ADD_TASK = "REMOVE_ADD_TASK";
 let CHANGE_CHECKED = "CHANGE_CHECKED";
 let ACTIVE = "ACTIVE"
+let UPDATESTATE = "UPDATESTATE"
 let id = 0;
 let initialState = {
   
@@ -37,6 +38,8 @@ const addMessageReducer = (state = initialState, action) => {
         stateCopy.Message.addMessage.push(newTask);
         stateCopy.Message.newMessage = "";
         stateCopy.counter.count++;
+        localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
+        // localStorage.setItem("count", JSON.stringify(stateCopy.counter.count));
         console.log("все работает");
         return stateCopy;
       } else {
@@ -54,15 +57,19 @@ const addMessageReducer = (state = initialState, action) => {
       for (let item of stateCopy.Message.addMessage) {
       if (item.checked === false && item.id === action.id) {
       stateCopy.counter.count--;
+      
       break
       }
     }
       stateCopy.Message.addMessage = result;
+      localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
       return stateCopy;
     case CHANGE_CHECKED:
       for (let item of stateCopy.Message.addMessage) {
         if (item.id === action.index) {
-          item.checked = !item.checked;
+         
+          item.checked = !item.checked
+          
           if (item.checked) {
             stateCopy.counter.count--;
           }
@@ -82,6 +89,15 @@ const addMessageReducer = (state = initialState, action) => {
         action.navigate("/ALLINACTIVE")
         console.log("not all")
       }
+      case UPDATESTATE:
+        if (localStorage.getItem("todo")) {
+          stateCopy.Message.addMessage = JSON.parse(localStorage.getItem("todo"));
+          console.log(state)
+        }
+        if (localStorage.getItem("count")) {
+          stateCopy.counter.count = JSON.parse(localStorage.getItem("count"));
+        }
+        
     default:
       return state;
   }
@@ -116,4 +132,10 @@ export const activeActionCreator = (active,navigate) => {
     navigate:navigate
   };
 };
+export const updateStateActionCreator = () => {
+  return {
+    type:UPDATESTATE
+  }
+}
 export default addMessageReducer;
+// localStorage.clear()
