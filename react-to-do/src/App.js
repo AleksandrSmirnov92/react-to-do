@@ -11,15 +11,7 @@ import Filtercontainer from './components/Main/Filter/Filter_container';
 // import addMessageReducer from './redux/addMessageReducer';
 // import {updateStateActionCreator} from "./redux/addMessageReducer"
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = JSON.parse(localStorage.getItem("todo"));
-  }
- componentDidMount() {
-  if (localStorage.getItem("todo")) {
-    this.state =JSON.parse(localStorage.getItem("todo"))
-    }
- }
+ 
  
   render() {
   return (
@@ -28,8 +20,9 @@ class App extends React.Component {
      <HeaderContainer/>
      <Main />
      <Filtercontainer/>
+     {/* <AllTaskContainer/> */}
      <Routes>
-       <Route path='/ALL' element= {<AllTaskContainer/>}/>
+       <Route path='/ALL' element= {<AllTaskContainer/>} />
        <Route path="/ALLACTIVE" element={<AllActiveContainer/>}/>
        <Route path="ALLINACTIVE" element={<AllInActiveContainer/>}/>
      </Routes>

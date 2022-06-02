@@ -9,21 +9,33 @@ let id = 0;
 let initialState = {
   
     Message: {
-      addMessage: [
+      addMessage: []
+      // [
         // { id: 1, massage: "hi" ,checked: false},
         // { id: 2, massage: "How are you" ,checked: false},
         // { id: 3, massage: "you" , checked: false},
         // { id: 4, massage: "yo" ,checked: false},
         // { id: 5, massage: "yo",checked: false },
-      ],
+      // ]
+      ,
       newMessage: "",
     },
     counter: {
       count: 0,
     },
-  
+   url:"/ALL"
 };
+if (localStorage.getItem("todo")) {
+  initialState.Message.addMessage = JSON.parse(localStorage.getItem("todo"))
+  
+}
+if (localStorage.getItem("count")) {
+  initialState.counter.count = JSON.parse(localStorage.getItem("count"));
+}
 
+if (localStorage.getItem("active")) {
+
+}
 const addMessageReducer = (state = initialState, action) => {
   let stateCopy = {...state}
   switch (action.type) {
@@ -39,7 +51,7 @@ const addMessageReducer = (state = initialState, action) => {
         stateCopy.Message.newMessage = "";
         stateCopy.counter.count++;
         localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
-        // localStorage.setItem("count", JSON.stringify(stateCopy.counter.count));
+        localStorage.setItem("count", JSON.stringify(stateCopy.counter.count));
         console.log("все работает");
         return stateCopy;
       } else {
@@ -57,6 +69,7 @@ const addMessageReducer = (state = initialState, action) => {
       for (let item of stateCopy.Message.addMessage) {
       if (item.checked === false && item.id === action.id) {
       stateCopy.counter.count--;
+      localStorage.setItem("count", JSON.stringify(stateCopy.counter.count));
       
       break
       }
@@ -69,26 +82,25 @@ const addMessageReducer = (state = initialState, action) => {
         if (item.id === action.index) {
          
           item.checked = !item.checked
-          
+          localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
           if (item.checked) {
             stateCopy.counter.count--;
+            
           }
           else {
             stateCopy.counter.count++;
           }
+          localStorage.setItem("count", JSON.stringify(stateCopy.counter.count));
           break;
         }
       }
       return stateCopy;
       case ACTIVE: 
-      if (action.active === "/ALLACTIVE") {
-        action.navigate("/ALLACTIVE")
-        console.log("all")
-      }
-      else if (action.active === "/ALLINACTIVE") {
-        action.navigate("/ALLINACTIVE")
-        console.log("not all")
-      }
+  
+      stateCopy.url = action.navigate
+      // initialState.url = action.navigate
+      localStorage.setItem("active", JSON.stringify(stateCopy.url));
+    
       case UPDATESTATE:
         if (localStorage.getItem("todo")) {
           stateCopy.Message.addMessage = JSON.parse(localStorage.getItem("todo"));
@@ -125,11 +137,10 @@ export const changeCheckedActionCreator = (index) => {
     index: index,
   };
 };
-export const activeActionCreator = (active,navigate) => {
+export const activeActionCreator = (navigate) => {
   return {
     type:ACTIVE,
-    active:active,
-    navigate:navigate
+    navigate:navigate,
   };
 };
 export const updateStateActionCreator = () => {

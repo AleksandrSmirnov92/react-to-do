@@ -3,15 +3,16 @@ import { connect } from "react-redux";
 import {activeActionCreator} from "../../../redux/addMessageReducer"
 import Filter from "./Filter";
 
-// let mapStateToProps = (state) => {
-//    return {
-//       newMassage:state
-//    }
-// }
-let mapDispatchToProps = (dispatch) => {
+let mapStateToProps = (state) => {
    return {
-      active:() => {dispatch(activeActionCreator())},
+      url:state
    }
 }
-const Filtercontainer = connect (null,mapDispatchToProps) (Filter)
+let mapDispatchToProps = (dispatch) => {
+   
+   return {
+      active:(navigate) => {dispatch(activeActionCreator(navigate))},
+   }
+}
+const Filtercontainer = connect (mapStateToProps,mapDispatchToProps) (Filter)
 export default Filtercontainer
