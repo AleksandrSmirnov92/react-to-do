@@ -10,10 +10,8 @@ import AllInActiveContainer from "../src/components/All_inActive/All_inActive_co
 import Filtercontainer from './components/Main/Filter/Filter_container';
 // import addMessageReducer from './redux/addMessageReducer';
 // import {updateStateActionCreator} from "./redux/addMessageReducer"
-class App extends React.Component {
+const App = () => {
  
- 
-  render() {
   return (
     <BrowserRouter>
     <div className={`${appCSS.wrapper} + ${appCSS._container}`}>
@@ -30,7 +28,7 @@ class App extends React.Component {
 
     </BrowserRouter>
   );
-  }
+  
 }
 
 export default App;
