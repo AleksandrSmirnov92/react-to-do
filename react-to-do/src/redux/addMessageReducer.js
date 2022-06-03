@@ -19,11 +19,12 @@ let initialState = {
       // ]
       ,
       newMessage: "",
+      
     },
     counter: {
       count: 0,
     },
-    url:null
+    
 };
 if (localStorage.getItem("todo")) {
   initialState.Message.addMessage = JSON.parse(localStorage.getItem("todo"))
@@ -100,11 +101,10 @@ const addMessageReducer = (state = initialState, action) => {
 
 
       case ACTIVE: 
-      for (let item of stateCopy.Message.addMessage ) {
-        item.url = action.navigate
-        
-      }
       stateCopy.url = action.navigate
+      for (let item of stateCopy.Message.addMessage) {
+        item.url = action.navigate
+      }
       localStorage.setItem("active", JSON.stringify(stateCopy.url));
       localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
      return stateCopy
