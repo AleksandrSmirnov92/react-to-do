@@ -23,7 +23,7 @@ let initialState = {
     counter: {
       count: 0,
     },
-   url:"/ALL"
+    url:null
 };
 if (localStorage.getItem("todo")) {
   initialState.Message.addMessage = JSON.parse(localStorage.getItem("todo"))
@@ -45,6 +45,7 @@ const addMessageReducer = (state = initialState, action) => {
           id: id,
           massage: stateCopy.Message.newMessage,
           checked: false,
+          url:stateCopy.url
         };
         id++;
         stateCopy.Message.addMessage.push(newTask);
@@ -95,12 +96,21 @@ const addMessageReducer = (state = initialState, action) => {
         }
       }
       return stateCopy;
+
+
+
       case ACTIVE: 
-  
+      for (let item of stateCopy.Message.addMessage ) {
+        item.url = action.navigate
+        
+      }
       stateCopy.url = action.navigate
-      // initialState.url = action.navigate
       localStorage.setItem("active", JSON.stringify(stateCopy.url));
+      localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
+     return stateCopy
     
+
+
       case UPDATESTATE:
         if (localStorage.getItem("todo")) {
           stateCopy.Message.addMessage = JSON.parse(localStorage.getItem("todo"));

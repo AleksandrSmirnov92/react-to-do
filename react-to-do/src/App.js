@@ -20,11 +20,11 @@ class App extends React.Component {
      <HeaderContainer/>
      <Main />
      <Filtercontainer/>
-     {/* <AllTaskContainer/> */}
+     <AllTaskContainer/>
      <Routes>
-       <Route path='/ALL' element= {<AllTaskContainer/>} />
+       {/* <Route path='/ALL' element= {<AllTaskContainer/>} />
        <Route path="/ALLACTIVE" element={<AllActiveContainer/>}/>
-       <Route path="ALLINACTIVE" element={<AllInActiveContainer/>}/>
+       <Route path="ALLINACTIVE" element={<AllInActiveContainer/>}/> */}
      </Routes>
     </div>
 

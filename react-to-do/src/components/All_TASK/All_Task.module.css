@@ -6,6 +6,22 @@
     padding-bottom: 20px;
     /* overflow: hidden; */
  }
+ .add_task_result1{
+   background-color: aliceblue;
+   display: flex;
+   justify-content: space-between;
+   padding-top: 10px;
+   padding-bottom: 20px;
+   /* overflow: hidden; */
+}
+.add_task_result2{
+   background-color: aliceblue;
+   display: none;
+   justify-content: space-between;
+   padding-top: 10px;
+   padding-bottom: 20px;
+   /* overflow: hidden; */
+}
  .add_task_result_text{
     width: 50%;
     word-wrap: break-word;

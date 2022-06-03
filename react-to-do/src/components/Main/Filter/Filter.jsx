@@ -4,13 +4,13 @@ import FilterCSS from "../Filter/Filter.module.css"
 const Filter = (props) => {
   
  let url = props.url.addMessageReducer.url
-   let navigate = useNavigate()
+   // let navigate = useNavigate()
    let [value,setValue] = useState()
    let text = React.createRef()
    let Nav = () => {
       
       setValue(text.current.value)
-      navigate(text.current.value)
+      // navigate(text.current.value)
      
       props.active(text.current.value)
    }
