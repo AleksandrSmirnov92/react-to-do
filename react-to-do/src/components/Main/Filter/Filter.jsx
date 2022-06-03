@@ -20,7 +20,7 @@ const Filter = (props) => {
             <select ref={text} value={value} className={FilterCSS.filter} onChange={Nav} defaultValue={'DEFAULT'} >
                <option  value="all" selected>Выбрать все </option>
                <option  value={"/ALLACTIVE"} > Выбрать активные </option>
-               <option  value={"/ALLINACTIVE"} >Выбрать законченные</option>
+               <option  value={"/ALLINACTIVE"} >Выбрать законченныеt</option>
             </select>
             
          </div>
