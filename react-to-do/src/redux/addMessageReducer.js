@@ -5,6 +5,7 @@ let REMOVE_ADD_TASK = "REMOVE_ADD_TASK";
 let CHANGE_CHECKED = "CHANGE_CHECKED";
 let ACTIVE = "ACTIVE"
 let UPDATESTATE = "UPDATESTATE"
+let CHEKEDCOLOR = "CHEKEDCOLOR"
 let id = 0;
 let initialState = {
   
@@ -48,7 +49,8 @@ const addMessageReducer = (state = initialState, action) => {
           id: id,
           massage: stateCopy.Message.newMessage,
           checked: false,
-          url:stateCopy.url
+          url:stateCopy.url,
+          chekedColor: false
         };
         id++;
         stateCopy.Message.addMessage.push(newTask);
@@ -84,7 +86,7 @@ const addMessageReducer = (state = initialState, action) => {
     case CHANGE_CHECKED:
       for (let item of stateCopy.Message.addMessage) {
         if (item.id === action.index) {
-         
+          
           item.checked = !item.checked
           localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
           if (item.checked) {
@@ -121,7 +123,17 @@ const addMessageReducer = (state = initialState, action) => {
         if (localStorage.getItem("count")) {
           stateCopy.counter.count = JSON.parse(localStorage.getItem("count"));
         }
+      break
+      case CHEKEDCOLOR:
+        for (let item of stateCopy.Message.addMessage)  {
+          if (item.id === action.index) {
         
+            item.chekedColor = !item.chekedColor
+            localStorage.setItem("todo", JSON.stringify(stateCopy.Message.addMessage));
+           break
+          }
+        }
+        return stateCopy
     default:
       return state;
   }
@@ -158,6 +170,12 @@ export const activeActionCreator = (navigate) => {
 export const updateStateActionCreator = () => {
   return {
     type:UPDATESTATE
+  }
+}
+export const chakedColorActionCreator = (index) => {
+  return {
+  type:CHEKEDCOLOR,
+  index:index
   }
 }
 export default addMessageReducer;
