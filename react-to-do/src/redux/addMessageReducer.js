@@ -35,7 +35,9 @@ if (localStorage.getItem("count")) {
 }
 
 if (localStorage.getItem("active")) {
+  if (initialState.counter.count > 0) {
   initialState.url = JSON.parse(localStorage.getItem("active"));
+  }
 }
 const addMessageReducer = (state = initialState, action) => {
   let stateCopy = {...state}

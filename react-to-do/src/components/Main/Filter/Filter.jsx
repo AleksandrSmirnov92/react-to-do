@@ -5,7 +5,7 @@ const Filter = (props) => {
   
  let url = props.url.addMessageReducer.url
    // let navigate = useNavigate()
-   let [value,setValue] = useState()
+   let [value = "all",setValue] = useState()
    let text = React.createRef()
    let Nav = () => {
       
@@ -13,14 +13,15 @@ const Filter = (props) => {
       // navigate(text.current.value)
      
       props.active(text.current.value)
+     
    }
    
    return (
       <div className={FilterCSS.filter_block}>
-            <select ref={text} value={value} className={FilterCSS.filter} onChange={Nav} defaultValue={'DEFAULT'} >
-               <option  value="all" selected>Выбрать все </option>
-               <option  value={"/ALLACTIVE"} > Выбрать активные </option>
-               <option  value={"/ALLINACTIVE"} >Выбрать законченныеt</option>
+            <select ref={text} value={url} className={FilterCSS.filter} onChange={Nav} defaultValue={'DEFAULT'} >
+               <option id="1" value="all" selected>Выбрать все </option>
+               <option id="2"  value={"/ALLACTIVE"} > Выбрать активные </option>
+               <option id="3"  value={"/ALLINACTIVE"} >Выбрать законченные</option>
             </select>
             
          </div>
