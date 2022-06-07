@@ -6,7 +6,7 @@ let reducers = combineReducers({
 });
 let local = () => {
   let s = {
-     message:[]
+    message: [],
   };
   s.message = JSON.parse(localStorage.getItem("todo"));
   return s;
