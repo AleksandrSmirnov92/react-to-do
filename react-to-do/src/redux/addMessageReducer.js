@@ -72,7 +72,7 @@ const addMessageReducer = (state = initialState, action) => {
         (item) => item.id !== action.id
       );
       for (let item of stateCopy.Message.addMessage) {
-        if (item.checked === false && item.id === action.id) {
+        if (item.checked === false && item.id === action.id && stateCopy.counter.count > 0) {
           stateCopy.counter.count--;
           localStorage.setItem(
             "count",
@@ -129,7 +129,7 @@ const addMessageReducer = (state = initialState, action) => {
             "todo",
             JSON.stringify(stateCopy.Message.addMessage)
           );
-          if (item.chekedColor) {
+          if (item.chekedColor && stateCopy.counter.count > 0) {
             stateCopy.counter.count--;
           } else {
             stateCopy.counter.count++;
