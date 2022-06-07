@@ -6,10 +6,11 @@ class AllTask extends React.Component {
   remove = (id) => {
     this.props.removeAddTask(id);
   };
-  checked = (index) => {
+  checked = (index,e) => {
+    // e.currentTarget.classList.toggle(`${FooterCSS.add_task_chacked_color}`)
     setTimeout(() => {
       this.props.changeChecked(index);
-    }, 1000);
+    },500);
   };
   checkedColorr = (index) => {
     this.props.chakedColor(index);
@@ -21,9 +22,11 @@ class AllTask extends React.Component {
         return (
           <div
             key={p.id}
-            className={`${FooterCSS.add_task_result1} ${
+            className={`${FooterCSS.add_task_result1} 
+            ${
               p.chekedColor ? FooterCSS.add_task_chacked_color : ""
-            }`}
+            }
+            `}
           >
             <span
               className={`${FooterCSS.add_task_result_text} ${
@@ -38,8 +41,8 @@ class AllTask extends React.Component {
               <input
                 type="checkbox"
                 id={p.id}
-                onClick={() => {
-                  this.checked(p.id);
+                onClick={(e) => {
+                  this.checked(p.id,e);
                   this.checkedColorr(p.id);
                 }}
                 defaultChecked={p.checked ? true : false}
