@@ -187,4 +187,4 @@ export const chakedColorActionCreator = (index) => {
   };
 };
 export default addMessageReducer;
-// localStorage.clear()
+localStorage.clear()
