@@ -13,6 +13,7 @@ const Filter = (props) => {
       // navigate(text.current.value)
      
       props.active(text.current.value)
+    
      
    }
    
